@@ -14,5 +14,4 @@ fs.appendFile(filePath, '\n' + someInfo, fileEncoding, function(err) {
   });
 });
 
-
 // **3. Отправить себе на почту письмо с помощью Node.js
