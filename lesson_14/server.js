@@ -16,8 +16,8 @@
 //     console.log(req);
 //     res.end();
 //   } else if(req.url === '/contact') {
-//     res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
 //     fs.readFile(indexHtmlPath, fileEncoding, (err, data) => {
+//       res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
 //       res.write(data);
 //       res.end();
 //     });
