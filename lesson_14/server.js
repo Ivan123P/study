@@ -35,10 +35,10 @@
 // const apiDataRequest = 'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=3';
 
 // request(apiDataRequest, function(_err, _response, _body) {
-//   let privatCurrencyJSON = _body;
-//   let privatCurrencyData = JSON.parse(privatCurrencyJSON);
+//   let _privatCurrencyJSON = _body;
+//   let _privatCurrencyData = JSON.parse(_privatCurrencyJSON);
 
-//   console.log(privatCurrencyData);
+//   console.log(_privatCurrencyData);
 // });
 
 // **4. Как отобразить эти данные используя только обычный html и javascript, без сервера?
