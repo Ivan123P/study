@@ -16,8 +16,8 @@
 //     console.log(req);
 //     res.end();
 //   } else if(req.url === '/contact') {
-//     res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
 //     fs.readFile(indexHtmlPath, fileEncoding, (err, data) => {
+//       res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
 //       res.write(data);
 //       res.end();
 //     });
@@ -31,9 +31,16 @@
 // Подсказка: нужно посмотреть сторонние модули.
 // https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=3
 
-let privatCurrencyJSON = '[{"ccy":"EUR","base_ccy":"UAH","buy":"28.63645","sale":"28.75875"},{"ccy":"RUR","base_ccy":"UAH","buy":"0.40599","sale":"0.40718"},{"ccy":"USD","base_ccy":"UAH","buy":"25.63005","sale":"25.64311"},{"ccy":"BTC","base_ccy":"USD","buy":"9189.8678","sale":"10157.2223"}]';
-let privatCurrencyData = JSON.parse(privatCurrencyJSON);
+// const request = require('request');
+// const apiDataRequest = 'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=3';
 
-console.log(privatCurrencyObj);
+// request(apiDataRequest, function(_err, _response, _body) {
+//   let privatCurrencyJSON = _body;
+//   let privatCurrencyData = JSON.parse(privatCurrencyJSON);
+
+//   console.log(privatCurrencyData);
+// });
 
 // **4. Как отобразить эти данные используя только обычный html и javascript, без сервера?
+
+// currencies + index.js
