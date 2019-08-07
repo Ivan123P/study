@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
-const courses = require('./data/courses.json');
 const bodyParser = require('body-parser');
+let courses = require('./data/courses.json');
 
 app.set('view engine', 'pug');
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -64,7 +64,7 @@ app.post('/courses/edit/:id', (req, res) => {
 });
 
 app.get('/courses/delete/:id', (req, res) => {
-  course = courses.filter( (course) => {
+  courses = courses.filter( (course) => {
     return course.id !== parseInt(req.params.id);
   })
 
