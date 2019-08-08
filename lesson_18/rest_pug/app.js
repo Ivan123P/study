@@ -1,7 +1,7 @@
-const express = require('express');
-const app = express();
+const express    = require('express');
 const bodyParser = require('body-parser');
-let courses = require('./data/courses.json');
+const app        = express();
+let courses      = require('./data/courses.json');
 
 app.set('view engine', 'pug');
 app.use(bodyParser.urlencoded({ extended: true }));
