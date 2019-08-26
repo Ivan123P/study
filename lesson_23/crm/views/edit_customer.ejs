@@ -17,6 +17,6 @@
     <input class="form-control" id="exampleInput4" name="phone" type="phone" placeholder="Телефон" value="<%= data[0].phone %>" required>
   </div>
   <button class="btn btn-default" type="submit" name="submit" value="Save">Добавить</button>
-  <button class="btn btn-default" type="submit" name="cancel" value="Cancel" onClick="window.location.href = '/customers';">Отмена</button>
+  <span class="btn btn-default" onClick="window.location.href = '/customers';">Отмена</span>
 </form>
 <%- include layouts/footer.ejs %>

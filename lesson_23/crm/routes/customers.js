@@ -14,7 +14,7 @@ module.exports.add = (req, res) => {
 module.exports.edit = (req, res) => {
   let id = req.params.id;
   req.getConnection( (err, connection) => {
-    connection.query('SELECT * FROM customers WHERE id - ?', [id], (err, rows) => {
+    connection.query('SELECT * FROM customers WHERE id = ?', [id], (err, rows) => {
       if(err) throw new Error;
       res.render('edit_customer', {title: 'Изменить пользователя CRM системе', data: rows});
     });
@@ -48,7 +48,7 @@ module.exports.edit_save = (req, res) => {
       email:   input.email,
       phone:   input.phone
     };
-    connection.query('UPDATE customers SET ? WHERE id - ?', [data, id], (err, rows) => {
+    connection.query('UPDATE customers SET ? WHERE id = ?', [data, id], (err, rows) => {
       if(err) throw new Error;
       res.redirect('/customers');
     });
@@ -58,7 +58,7 @@ module.exports.edit_save = (req, res) => {
 module.exports.delete = (req, res) => {
   let id = req.params.id;
   req.getConnection( (err, connection) => {
-    connection.query('DELETE FROM customers WHERE id - ?', [id], (err, rows) => {
+    connection.query('DELETE FROM customers WHERE id = ?', [id], (err, rows) => {
       if(err) throw new Error;
       res.redirect('/customers');
     });
