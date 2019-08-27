@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  
+  <ul class="fn_list">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+  <p class="my-p"></p>
+  <button class="my-btn">Click me</button>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <script>
+    'use sctrict';
+    // const myParagraph = $('#main > p:first');
+    
+    // console.log(myParagraph.attr({
+    //   "style": "background:red;",
+    //   "data-attr": "my-attr",
+    //   title: "From Script"
+    // }));
+
+    // myParagraph.attr('class', 'my-class');
+    // myParagraph.attr('style', (i, v) => {
+    //   return "color: red; font-size: 24px;";
+    // });
+
+    // myParagraph.css({
+    //   color: "black",
+    //   fontSize: "12px"
+    // });
+
+    // myParagraph.css('background-color', 'lightblue');
+
+    const myLi = $(".fn_list > li");
+    const myBtn = $(".my-btn");
+
+    myLi.on('click', (e) => {
+      // $(e.target).off('click');
+      console.log($(e.target));//removeListener();
+      $(e.target).siblings().removeClass('active');
+      $(e.target).addClass('active');
+      myBtn.trigger('click');
+    });
+
+    let i = 0;
+
+    myBtn.on('click', (e) => {
+      i++;
+      $('.my-p').text(i);
+    });
+  </script>
+</body>
+</html>
