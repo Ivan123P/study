@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    /* #popup {
+      display: none;
+      width: 300px;
+      height: 300px;
+      padding: 20px;
+      border: 1px solid black;
+    }
+    #popup.active {
+      display: block;
+    }
+    input {
+      display: table;
+      margin: 0 auto;
+      margin-bottom: 10px;
+    }
+    button {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    button#open-popup {
+      width: unset;
+    }
+    button#close,
+    button#clear {
+      display: table;
+      margin-left: auto;
+      width: unset;
+      margin-bottom: 15px;
+    } */
+
+    .main {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 200px;
+    }
+
+    .inner {
+      display: block;
+      width: 20px;
+      height: 20px;
+      background-color: #ff0000;
+      border: 1px solid #000;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- <button id="open-popup">open</button>
+
+  <div id="popup">
+    <button id="close">close</button>
+    <input id="color" type="text" value=""> -->
+    <!-- <button class="js_color">red</button>
+    <button class="js_color">lightgreen</button>
+    <button class="js_color">lightcyan</button> -->
+    <!-- <button class="js_color">set color</button>
+    <button id="clear">clear</button>
+  </div> -->
+
+  <!-- <p>text-1</p>
+  <p>text-2</p>
+  <p>text-3</p>
+  <p>text-4</p> -->
+
+  <script src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <script>
+    'use sctrict';
+
+    // const popup      = $('#popup');
+    // const openPopup  = $('#open-popup');
+    // const popupColor = $('.js_color');
+    // const inputColor = $('#color');
+    // const closePopup = $('#close');
+    // const clearColor = $('#clear');
+    
+    // openPopup.click(function() {
+    //   popup.addClass('active');
+    // });
+
+    // closePopup.click(function() {
+    //   inputColor.val('');
+    //   popup.css('background-color', 'white');
+    //   popup.removeClass('active');
+    // });
+
+    // popupColor.each(function() {
+    //   $(this).click(function() {
+    //     // let color = $(this).text();
+    //     let color = inputColor.val();
+
+    //     if(!color){
+    //       color = 'green';
+    //     }
+
+    //     popup.css('background-color', color);
+    //   });
+    // });
+
+    // clearColor.click(function() {
+    //   popup.css('background-color', 'white');
+    // });
+
+    // $('p').each(function() {
+    //   $(this).wrap(`<div class="${ $(this).text() }"></div>`);
+    // });
+
+    // $('p').each(function() {
+    //   if($(this).parent().hasClass('text-1')) {
+    //     $(this).detach(); //сохраняет все что было привязано, remove удаляет все что было привязано к элементу
+    //   }
+    // });
+
+    const divWrap  = $('<div class="main"></div>');
+    const divInner = $('<div class="inner"></div>');
+
+    $('body').append(divWrap);
+
+    const mainDiv = $('.main');
+
+    while(i = 100) {
+      mainDiv
+    }
+
+  </script>
+</body>
+</html>
