@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .my-scene {
+      display: flex;
+      flex-wrap: wrap;
+      width: 500px;
+    }
+    .my-square {
+      width: 50px;
+      height: 50px;
+    }
+    .red-square {
+      background-color: rgba(255, 0, 0, 0.425);
+    }
+    .green-square {
+      background-color: rgba(0, 128, 0, 0.425);
+    }
+  </style>
+</head>
+<body>
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <script>
+    'use sctrict';
+    
+    let gameInterval;
+
+    createScene();
+    setUserControls();
+
+    gameInterval = setInterval(() => {
+      if($('.red-square').length === 0) {
+        clearInterval(gameInterval);
+      };
+      changeColor();
+    }, 1000);
+
+    function changeColor() {
+      const greenSquares = $('.green-square');
+
+      const randomIndex = Math.floor(Math.random() * (greenSquares.length + 0) - 0);
+
+      const randomGreenSquare = $(greenSquares[randomIndex]);
+
+      if(randomGreenSquare.hasClass('green-square')) {
+        randomGreenSquare.removeClass('green-square');
+        randomGreenSquare.addClass('red-square');
+      }
+    }
+
+    function setUserControls() {
+      const allSquares = $('.my-square');
+
+      allSquares.on('click', function() {
+        if($(this).hasClass('red-square')) {
+          $(this).removeClass('red-square');
+          $(this).addClass('green-square');
+        };
+      });
+    }
+
+    function createScene() {
+      const scene  = $('<div class="my-scene"></div>');
+      const square = $('<div class="my-square"></div>');
+      let sceneColorFlag = true;
+      
+      for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+          if(j === 0) {
+            sceneColorFlag = !sceneColorFlag;
+          }
+          if(sceneColorFlag) {
+            scene.append(square.clone().addClass('red-square'));
+            sceneColorFlag = !sceneColorFlag;
+          } else {
+            scene.append(square.clone().addClass('green-square'));
+            sceneColorFlag = !sceneColorFlag;
+          }
+        }
+      };
+
+      $('body').append(scene);
+    }
+  </script>
+</body>
+</html>
