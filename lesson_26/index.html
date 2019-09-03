@@ -21,75 +21,234 @@
     .green-square {
       background-color: rgba(0, 128, 0, 0.425);
     }
+    .error {
+      border-color: red;
+    }
   </style>
 </head>
 <body>
+  <form class="my-form" action="https://google.com">
+    <input class="input-name" type="text" value="">
+    <input class="input-surname" type="text" value="">
+    <input type="submit">
+  </form>
 
+  <!-- <input class="game-level-input" type="number">
+  <button class="start-game">start game</button>
+  <button class="restart-game">restart game</button> -->
 
   <script src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
   <script>
     'use sctrict';
-    
-    let gameInterval;
 
-    createScene();
-    setUserControls();
+    function Validator(options) {
+      this.form = $(options.form);
+      this.inputs = options.inputs;
 
-    gameInterval = setInterval(() => {
-      if($('.red-square').length === 0) {
-        clearInterval(gameInterval);
-      };
-      changeColor();
-    }, 1000);
-
-    function changeColor() {
-      const greenSquares = $('.green-square');
-
-      const randomIndex = Math.floor(Math.random() * (greenSquares.length + 0) - 0);
-
-      const randomGreenSquare = $(greenSquares[randomIndex]);
-
-      if(randomGreenSquare.hasClass('green-square')) {
-        randomGreenSquare.removeClass('green-square');
-        randomGreenSquare.addClass('red-square');
-      }
+      this.init();
     }
 
-    function setUserControls() {
-      const allSquares = $('.my-square');
-
-      allSquares.on('click', function() {
-        if($(this).hasClass('red-square')) {
-          $(this).removeClass('red-square');
-          $(this).addClass('green-square');
-        };
+    Validator.prototype.init = function() {
+      this.inputs.forEach((el, i) => {
+        this.onBlur(el.name, el.ruls);
       });
     }
 
-    function createScene() {
-      const scene  = $('<div class="my-scene"></div>');
-      const square = $('<div class="my-square"></div>');
-      let sceneColorFlag = true;
-      
-      for (let i = 0; i < 3; i++) {
-        for (let j = 0; j < 3; j++) {
-          if(j === 0) {
-            sceneColorFlag = !sceneColorFlag;
-          }
-          if(sceneColorFlag) {
-            scene.append(square.clone().addClass('red-square'));
-            sceneColorFlag = !sceneColorFlag;
-          } else {
-            scene.append(square.clone().addClass('green-square'));
-            sceneColorFlag = !sceneColorFlag;
-          }
-        }
-      };
-
-      $('body').append(scene);
+    Validator.prototype.onBlur = function(element, ruls) {
+      $(element).on('blur', (e) => {
+        if(this.minLength($(element).val(), ruls[0].value)) {
+          $(element).addClass('error');
+        } else {
+          $(element).removeClass('error');
+        }            
+      });
     }
+
+    Validator.prototype.minLength = function(val, min) {
+      if(val.length < min) {
+        return true;
+      }
+
+      return false;
+    }
+
+    Validator.prototype.validate = function() {
+      console.log(this.form);
+    }
+    
+    const validator = new Validator({
+      form: '.my-form',
+      inputs: [
+        {
+          name: '.input-name',
+          surname: '.input-surname',
+          ruls: [
+            {
+              key: "minLength",
+              value: 5
+            }
+          ]
+        }
+      ]
+    });
+
+    validator.validate();
+
+    const minLength = 10;
+    const inputs = $('input');
+
+    $('form').on('submit', function(e) {
+      const inputNameValue = $('.input-name').val();
+      if(inputNameValue === '') {
+        return false;
+      }
+
+    });
+
+    //----------------------------------------- change \/
+
+   
+
+    // inputs.on('change', function() {
+    //   console.log($(this).val());
+    // });
+    //----------------------------------------- focus \/
+
+    // inputs.on('focus', function() {
+    //   console.log($(this).val());
+    // });
+    //----------------------------------------- blur \/
+
+    // inputs.on('blur', function() {
+    //   if($(this).val().length < minLength) {
+    //     $('input[type=submit]').attr('disabled', true);
+    //   } else {
+    //     $('input[type=submit]').attr('disabled', false);
+    //   }
+
+    //   console.log($(this).val());
+    // });
+    
+    //---------------------------------------- Game \/
+    // let gameInterval;
+    // let startGameFlag = false;
+
+    // $('.start-game').on('click', function() {
+    //   let gameLevel = 10;
+    //   const levelInput = Number($('.game-level-input').val());
+      
+    //   if(!startGameFlag) {
+    //     if(levelInput < 11 && levelInput > 0) {
+    //       gameLevel = levelInput;
+    //     }
+
+    //     startGame(gameLevel * 1000);
+
+    //     startGameFlag = true;
+    //   }
+    // });
+
+    // $('.restart-game').on('click', function() {
+    //   clearGame();
+
+    //   $('.start-game').trigger('click');
+    // });
+
+    // function checkGameResult() {
+    //   const greenSquareLength = $('.green-square').length;
+
+    //   if(greenSquareLength === 100) {
+    //     alert('Win!');
+
+    //     clearGame();
+    //   } else if (greenSquareLength === 0) {
+    //     alert('End Game!');
+
+    //     clearGame();
+    //   }
+    // }
+    
+    // function clearGame() {
+    //   $('.my-scene').remove();
+
+    //   clearInterval(gameInterval);
+    //   startGameFlag = false;
+    // }    
+
+    // function startGame(level) {
+    //   createScene();
+    //   setUserControls();
+    //   runInterval(level);
+    // }
+
+    // function runInterval(timer) {
+    //   gameInterval = setInterval(() => {
+    //     // if($('.red-square').length === 0) {
+    //     //   clearInterval(gameInterval);
+    //     //   console.log('end game');
+    //     // };
+
+    //     // if($('.green-square').length === 0) {
+    //     //   clearInterval(gameInterval);
+    //     //   console.log('end game');
+    //     // };
+
+    //     changeColor();
+    //   }, timer);
+    // }
+
+    // function changeColor() {
+    //   const greenSquares = $('.green-square');
+
+    //   const randomIndex = Math.floor(Math.random() * (greenSquares.length + 0) - 0);
+
+    //   const randomGreenSquare = $(greenSquares[randomIndex]);
+
+    //   if(randomGreenSquare.hasClass('green-square')) {
+    //     randomGreenSquare.removeClass('green-square');
+    //     randomGreenSquare.addClass('red-square');
+    //   }
+
+    //   checkGameResult();
+    // }
+
+    // function setUserControls() {
+    //   const allSquares = $('.my-square');
+
+    //   allSquares.on('click', function() {
+    //     if($(this).hasClass('red-square')) {
+    //       $(this).removeClass('red-square');
+    //       $(this).addClass('green-square');
+    //     };
+
+    //     checkGameResult();
+    //   });
+    // }
+
+    // function createScene() {
+    //   const scene  = $('<div class="my-scene"></div>');
+    //   const square = $('<div class="my-square"></div>');
+    //   let sceneColorFlag = true;
+      
+    //   for (let i = 0; i < 2; i++) {
+    //     for (let j = 0; j < 2; j++) {
+    //       if(j === 0) {
+    //         sceneColorFlag = !sceneColorFlag;
+    //       }
+    //       if(sceneColorFlag) {
+    //         scene.append(square.clone().addClass('red-square'));
+    //         sceneColorFlag = !sceneColorFlag;
+    //       } else {
+    //         scene.append(square.clone().addClass('green-square'));
+    //         sceneColorFlag = !sceneColorFlag;
+    //       }
+    //     }
+    //   };
+
+    //   $('body').append(scene);
+    // }
   </script>
 </body>
 </html>
