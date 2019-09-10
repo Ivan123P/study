@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* div {
+      background: #def3ca;
+      margin: 3px;
+      width: 80px;
+      display: none;
+      float: left;
+      text-align: center;
+    }
+    p {
+      background: yellow;
+      margin: 3px;
+      width: 80px;
+      height: 80px;
+      / display: none; /
+      text-align: center;
+    }
+    .block {
+      position: absolute;
+      background-color: green;
+      left: 0;
+      top: 30px;
+      width: 60px;
+      height: 60px;
+      margin: 5px;
+    } */
+    /* div {
+      background: #de9a44;
+      margin: 3px;
+      width: 80px;
+      height: 40px;
+      display: block;
+      float: left;
+    } */
+    .big-block {
+      height: 3000px;
+      background: green;
+    }
+    .some-elem {
+      position: relative;
+      top: 1500px;
+      text-align: center;
+      font-size: 30px;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- <button id="showF">Show text</button>
+  <div>Hello</div>
+  <div>animation</div>
+  <div>world</div>
+  <div>jquery</div>
+  </br>
+  <button id="showSq">Square</button>
+  <p>Square</p> -->
+
+  <!-- <input type="button" id="btn" value="push me" style="position: relative;"> -->
+  
+  <!-- <input type="button" id="go" value="go">
+  <input type="button" id="stop" value="stop">
+  <input type="button" id="back" value="back">
+  <div class="block"></div> -->
+
+  <!-- click me!
+  <div></div>
+  <div></div>
+  <div></div> -->
+
+  <!-- <p>Paragraph #1</p>
+  <input type="button" id="button1" value="Push Me!" /> -->
+
+  <button id="scroll">scroll</button>
+  <div class="big-block">
+    <div class="some-elem">Here im!</div>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <script src="jquery.bez.js"></script>
+  <script>
+    'use sctrict';    
+    $(document).ready(function() {
+
+
+      // 1st example
+      // $('#showF').on('click', function() {
+      //   //последовательно применять к кубикам анимацию
+      //   $('div').first().show(1000, function showNext() {
+      //     $(this).next('div').show(1000, showNext);
+      //   });
+      // });
+
+      // $('#showSq').on('click', function() {
+      //   $('p').first().show('fast', 'linear');
+      // });
+
+      // 2nd example
+      // $('#showF').on('click', function() {
+      //   //последовательно применять к кубикам анимацию - рекурсия
+      //   $('div').first().hide(1000, function showNext() {
+      //     $(this).next('div').hide(1000, showNext);
+      //   });
+      // });
+
+      // $('#showSq').on('click', function() {
+      //   $('p').first().hide('fast', 'linear');
+      // });
+
+      // 3d example
+      // $('#showF').on('click', function() {
+      //   //последовательно применять к кубикам анимацию - рекурсия
+      //   $('div').first().hide(1000, function showNext() {
+      //     $(this).next('div').hide(1000, showNext);
+      //   });
+      // });
+
+      // $('#showSq').on('click', function() {
+      //   $('p').first().hide('fast', 'linear').show(900);
+      // });
+
+      // 4th example 
+      // $('#showF').on('click', function() {
+      //   //последовательно применять к кубикам анимацию - рекурсия
+      //   $('div').first().toggle(1000, function showNext() {
+      //     $(this).next('div').toggle(1000, showNext);
+      //   });
+      // });
+
+      // $('#showSq').on('click', function() {
+      //   $('p').first().toggle('fast', 'linear').show(900);
+      // });
+
+      // 5th example
+      // $('#btn').click(function() {
+      //   $('#btn').animate({left: '120px'}, 3000, $.bez([0.12, 1.965, 0.550, 0.3]), function() {
+      //     console.log('first animation');
+      //   }).animate({fontSize: '100px'}, 'slow', $.bez([0.12, 1.965, 0.550, 0.3]), function() {
+      //     console.log('second animation');
+      //   });
+      // });
+
+      // 6th example
+        // $('#go').click(function() {
+        //   $('.block').animate({left: '200px'}, 4000);
+        // });
+        // $('#stop').click(function() {
+        //   $('.block').stop(true, true);
+        // });
+        // $('#back').click(function() {
+        //   $('.block').animate({left: '0px'}, 4000);
+        // });
+
+      // 7th example
+      // $(document.body).click(function() {
+      //   if($('div:first').is(':hidden')) {
+      //     $('div').slideUp(1000);
+      //   } else {
+      //     $('div').slideDown(1000);
+      //   }
+      // });
+
+      // 8th example
+      // $('#button1').click(function() {
+      //   $('p').fadeOut('slow', $.bez([0.12, 1.965, 0.550, 0.3])).delay(3000).fadeIn('slow', $.bez([0.12, 1.965, 0.250, 1.3]));
+      // });
+
+      // 9th example
+      // $('p').click(function() {
+      //   $(this).fadeTo('slow', 0.33);
+      // });
+      // 10th example
+
+      let scrollPosition = $('.some-elem').offset().top;
+
+      $('#scroll').click(function() {
+        $("body, html").animate({
+          scrollTop: scrollPosition
+        });
+      });
+
+    });
+  </script>
+</body>
+</html>
