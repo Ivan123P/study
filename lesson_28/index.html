@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AJAX</title>
+</head>
+<body>
+  <!-- Реализация цепочки вызовов функций -->
+  <!-- web worker -->
+  <!-- jsonplaceholder -->
+
+  <ul class="list"></ul>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <script>
+  "use strict";
+  const id = 2;
+  const post = {
+    "title": "Hello world!",
+    "description": "some text"
+  }
+
+  // $.ajax({
+  //   method: "get",
+  //   url: `http://localhost:3030/posts/${id}`,
+  //   // success: (data) => {
+  //   //   const titleList = $('.list');
+  //   //   const titleItem = null;
+
+  //   //   // for(let obj of data) {
+  //   //     if( data.title ) {
+  //   //       titleList.append($('<li></li').text(data.title));
+  //   //     }
+  //   //   // }
+  //   // },
+
+  //   // error: (err) => {
+  //   //   console.log("error", err);
+  //   // },
+
+  //   // complete: (data) => {
+  //   //   console.log("complete", data);
+  //   // }
+  //   cache: false,
+  //   headers: {
+      
+  //   }
+  // }).done(function(data) {
+  //   console.log(data);
+  // }).fail(function(err) {
+  //   console.log(err);
+  // }).always(function(data) {
+  //   console.log(data);
+  // });
+  // $.ajax({
+  //   method: "post",
+  //   url: `http://localhost:3030/posts`,
+  //   data: post,
+  //   success: (data) => {
+  //     console.log("success", data);
+  //   },
+  //   error: (err) => {
+  //     console.log("error", err);
+  //   },
+  //   complete: (data) => {
+  //     console.log("complete", data);
+  //   },
+  //   cache: false,
+  //   headers: {      
+  //   }
+  // });
+  // $.ajax({
+  //   method: "put",
+  //   url: `http://localhost:3030/posts/${id}`,
+  //   data: post,
+  //   success: (data) => {
+  //     console.log("success", data);
+  //   },
+  //   error: (err) => {
+  //     console.log("error", err);
+  //   },
+  //   complete: (data) => {
+  //     console.log("complete", data);
+  //   },
+  //   cache: false,
+  //   headers: {      
+  //   }
+  // });
+  $.ajax({
+    method: "delete",
+    url: `http://localhost:3030/posts/${id}`,
+    data: post,
+    success: (data) => {
+      console.log("success", data);
+    },
+    error: (err) => {
+      console.log("error", err);
+    },
+    complete: (data) => {
+      console.log("complete", data);
+    },
+    cache: false,
+    headers: {      
+    }
+  });
+  </script>
+</body>
+</html>
