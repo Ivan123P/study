@@ -1,11 +1,16 @@
-var User = (function () {
-    function User(name) {
+var Employee = (function () {
+    function Employee(name, position) {
         this.name = name;
+        this.position = position;
+        this.company = "UTU";
     }
-    return User;
+    Employee.prototype.printToConsole = function () {
+        console.log("Employee " + this.name + ", position - " + this.position + ", company - " + this.company);
+    };
+    return Employee;
 }());
-var user1 = new User('Ivan');
-var array = [];
-array.push(user1);
-console.log(array);
+var empl = new Employee("Ivan", "Developer");
+empl.name = "John";
+empl.position = "Tester";
+empl.printToConsole();
 //# sourceMappingURL=main.js.map
