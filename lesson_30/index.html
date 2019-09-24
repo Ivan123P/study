@@ -5,9 +5,168 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>TypeScript</title>
+
+  <style>
+  
+    #square {
+      width: 200px;
+      height: 200px;
+      background-color: #f9f0f0;
+    }
+
+    #square.red {
+      background-color: #ff4646;
+    }
+
+    #square.green {
+      background-color: #8cff8c;
+    }
+
+  </style>
 </head>
 <body>
+
+  <div id="square"></div>
+
+  <input id="input" type="text">
+
+  <!-- pattern 3 подгруппы 20 +/- посмотреть -->
   
   <script src="dist/main.js"></script>
+  <!-- <script>
+    
+    const data = [
+      {id: 1, body: "admin"},
+      {id: 2, body: "user"},
+      {id: 3, body: "moder"}
+    ];
+    
+    function getUser() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve({
+            name: 'ivan',
+                age: 26,
+                id: 3
+              });
+            }, 3000);
+          });
+        }
+        
+    function getDataById(id) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          const res = data.filter(item => id === item.id);
+          resolve(res);
+        }, 1000);
+      });
+    }
+        
+    // let user = getUser();
+    
+    // user.then((user) => {
+    //   console.log(user);
+    //   return user.id;
+    // }).then((id) => {
+    //   console.log(id);
+    //   return getDataById(id);
+    // }).then((data) => {
+    //   console.log(data);
+    // });
+      
+    async function doIt() {
+      const user = await getUser();
+      const data = await getDataById(user.id);
+      
+      console.log(data[0]);
+    }
+    
+    doIt();
+      
+  </script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.5.3/rxjs.umd.js"></script>
+  <script>
+    const mySquare = $('#square');
+    $(() => {
+      // console.log(rxjs);
+
+      const {Observable} = rxjs;
+      const {pipe, delay, map} = rxjs.operators;
+
+      // const stream2 = new Observable((observer) => {
+      //   setTimeout(() => {
+      //     observer.next('Oleg');
+      //   },1000);
+      // });
+
+      // stream2.subscribe(
+      //   (data) => console.log(data)
+      // );
+
+      const stream$ = rxjs.Observable.create((observer) => {
+        observer.next({
+          name: "ivan",
+          id: 5
+        });
+      });
+
+      // stream$.pipe(
+      //   delay(2000),
+      //   map((res) => res.name)
+      // ).subscribe(
+      //   (data) => console.log(data)
+      // );
+      
+      
+      // const interval$ = rxjs.interval(1000);
+      
+      // interval$.subscribe(() => {
+      //   if(mySquare.hasClass('green')) {
+      //     mySquare.removeClass('green');
+      //     mySquare.addClass('red');
+      //   } else {
+      //     mySquare.removeClass('red');
+      //     mySquare.addClass('green');
+      //   }
+      // });
+
+      
+
+      const cars = [
+        {
+          model: 'BMW',
+          id: 1
+        },
+        {
+          model: 'Opel',
+          id: 2
+        },
+        {
+          model: 'Ford',
+          id: 3
+        },
+        {
+          model: 'Tesla',
+          id: 4
+        }
+      ];
+
+      let clickStream$ = rxjs.fromEvent(document.getElementById('input'), 'input');
+      
+      clickStream$.pipe(
+        map((e) => {
+          return e.target.value;
+        })
+      ).subscribe((value) => {
+        let car = cars.filter((car) => car.id == value);
+        console.log(car[0]);
+        if(car[0]) {
+          $('#input').after(`<p>${car[0].model}</p>`);
+        }
+      });
+
+    });
+  </script>
 </body>
 </html>

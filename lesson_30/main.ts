@@ -20,24 +20,58 @@
 // showMessage(2);
 // showMessage('test');
 
-class Employee {
-  public name: string;
-  position: string;
-  private company: string;
+// class Human {
+//   public name: string;
+//   public age: number;
 
-  constructor(name: string, position: string) {
-    this.name = name;
-    this.position = position;
-    this.company = "UTU";
-  }
+//   constructor(name: string, age: number) {
+//       this.name = name;
+//       this.age = age;
+//   }
 
-  printToConsole() {
-    console.log(`Employee ${this.name}, position - ${this.position}, company - ${this.company}`);
-  }
-}
+//   public say(): void {
+//       console.log(`My name ${this.name}`);
+//   }
+// }
 
-let empl: Employee = new Employee("Ivan", "Developer");
-empl.name = "John";
-empl.position = "Tester";
+// class Computer {
+//   constructor(public model: string) {}
 
-empl.printToConsole();
+//   public game(): void {
+//     console.log('game on');
+//   }
+// }
+
+// class User extends Human {
+//   public computer: Computer;
+
+//   constructor(
+//     name: string, 
+//     age: number, 
+//     computer: Computer
+//     ) {
+//     super(name, age);
+//     this.computer = computer;
+//   }
+
+//   public say(): void {
+//     super.say();
+//     console.log('my method');
+//   }
+
+//   public play(): void {
+//     console.log('Im play right now');
+//     this.computer.game();
+//   }
+// }
+
+// const comp1 = new Computer('pent');
+// const user1 = new User('Oleg', 25, comp1);
+// user1.say();
+// console.log(user1);
+
+
+
+/* PROMISES */
+
+// let promise = new Promise();
