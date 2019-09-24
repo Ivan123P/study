@@ -29,6 +29,7 @@
   <div id="square"></div>
 
   <input id="input" type="text">
+  <p></p>
 
   <!-- pattern 3 подгруппы 20 +/- посмотреть -->
   
@@ -91,11 +92,12 @@
 
     /* RXJS */
     const mySquare = $('#square');
+
     $(() => {
       // console.log(rxjs);
 
       const {Observable} = rxjs;
-      const {pipe, delay, map} = rxjs.operators;
+      const {pipe, delay, map, filter} = rxjs.operators;
 
       // const stream2 = new Observable((observer) => {
       //   setTimeout(() => {
@@ -107,12 +109,12 @@
       //   (data) => console.log(data)
       // );
 
-      const stream$ = rxjs.Observable.create((observer) => {
-        observer.next({
-          name: "ivan",
-          id: 5
-        });
-      });
+      // const stream$ = rxjs.Observable.create((observer) => {
+      //   observer.next({
+      //     name: "ivan",
+      //     id: 5
+      //   });
+      // });
 
       // stream$.pipe(
       //   delay(2000),
@@ -136,39 +138,88 @@
 
       
 
-      const cars = [
-        {
-          model: 'BMW',
-          id: 1
-        },
-        {
-          model: 'Opel',
-          id: 2
-        },
-        {
-          model: 'Ford',
-          id: 3
-        },
-        {
-          model: 'Tesla',
-          id: 4
-        }
-      ];
+      // const cars = [
+      //   {
+      //     model: 'BMW',
+      //     id: 1
+      //   },
+      //   {
+      //     model: 'Opel',
+      //     id: 2
+      //   },
+      //   {
+      //     model: 'Ford',
+      //     id: 3
+      //   },
+      //   {
+      //     model: 'Tesla',
+      //     id: 4
+      //   }
+      // ];
 
-      let clickStream$ = rxjs.fromEvent(document.getElementById('input'), 'input');
+      // let clickStream$ = rxjs.fromEvent(document.getElementById('input'), 'input');
       
-      clickStream$.pipe(
-        map((e) => {
-          return e.target.value;
+      // clickStream$.pipe(
+      //   map((e) => {
+      //     return e.target.value;
+      //   })
+      // ).subscribe((value) => {
+      //   let car = cars.filter((car) => car.id == value);
+      //   console.log(car[0]);
+      //   if(car[0]) {
+      //     $('#input').after(`<p>${car[0].model}</p>`);
+      //   }
+      // });
+/* PRIMER from audit */
+    const arrCar = [{
+        name: 'Ford',
+        price: 500
+    },
+    {
+        name: 'BMW',
+        price: 350
+    },
+    {
+        name: 'AUDI',
+        price: 290
+    },
+    {
+        name: 'Fiat',
+        price: 600
+    },
+    {
+        name: 'Volvo',
+        price: 400
+    },
+    
+    {
+        name: 'Chery',
+        price: 99
+    },
+    {
+        name: 'Lada',
+        price: 50
+    },
+    {
+        name: 'Bentley',
+        price: 9900
+    },
+    {
+        name: 'Chevrolet',
+        price: 2500
+    }
+];     
+    rxjs.fromEvent(document.querySelector('input'), 'keyup')
+    .pipe(map(x => x.target.value))
+    .subscribe(keyValue => {
+        rxjs.from(arrCar)
+        .pipe(filter(car => car.name.toLowerCase() === keyValue.toLowerCase()))
+        .subscribe(car => {
+            document.querySelector('p').innerHTML = `Car: ${car.name}. Price: ${car.price}`
         })
-      ).subscribe((value) => {
-        let car = cars.filter((car) => car.id == value);
-        console.log(car[0]);
-        if(car[0]) {
-          $('#input').after(`<p>${car[0].model}</p>`);
-        }
-      });
+    });
 
+/* PRIMER from audit */   
     });
   </script>
 </body>
