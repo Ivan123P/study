@@ -35,7 +35,7 @@ export class ProductListComponent implements OnInit {
     this.selectedProduct = product;
   }
 
-  public addProduct(): void {
-    console.log(this.newProduct);
+  public addProduct(nameP: HTMLInputElement, price: HTMLInputElement): void {
+    console.log(nameP.value, price.value);
   }
 }

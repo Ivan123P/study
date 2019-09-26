@@ -19,12 +19,12 @@
   <form style="width: 30%;">
     <div class="form-group">
       <label for="product">Product</label>
-      <input [(ngModel)]="newProduct.name" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="product" placeholder="Enter data">
+      <input #nameP [(ngModel)]="newProduct.name" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="product" placeholder="Enter data">
     </div>
     <div class="form-group">
       <label for="price">Price</label>
-      <input [(ngModel)]="newProduct.price" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="price" placeholder="Enter data">
+      <input #price [(ngModel)]="newProduct.price" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="price" placeholder="Enter data">
     </div>
-    <button class="btn btn-primary" (click)="addProduct()">Submit</button>
+    <button class="btn btn-primary" (click)="addProduct(nameP, price)">Submit</button>
   </form>
 </div>
