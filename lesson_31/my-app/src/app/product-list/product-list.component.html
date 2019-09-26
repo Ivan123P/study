@@ -1,0 +1,27 @@
+<div class="container">
+  <p>My products!</p>
+  
+  <!-- <ol>
+    <li *ngFor="let product of productList" (click)="selectProduct(product)">
+      {{product.name}} {{product.price}}
+    </li>
+  </ol> -->
+  <hr>
+  <p *ngIf="selectedProduct">{{selectedProduct.name}}</p>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of productList">
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

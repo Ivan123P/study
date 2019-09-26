@@ -91,6 +91,9 @@
   <script>
 
     /* RXJS */
+
+  //  https://habr.com/ru/company/jugru/blog/302284/
+    
     const mySquare = $('#square');
 
     $(() => {
@@ -208,7 +211,7 @@
         name: 'Chevrolet',
         price: 2500
     }
-];     
+  ];     
     rxjs.fromEvent(document.querySelector('input'), 'keyup')
     .pipe(map(x => x.target.value))
     .subscribe(keyValue => {
