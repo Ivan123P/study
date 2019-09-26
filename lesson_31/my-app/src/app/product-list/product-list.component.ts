@@ -1,18 +1,11 @@
 import { Component } from '@angular/core';
+import { ProductService } from './product.service';
+import { OnInit } from '@angular/core';
 
-interface Product {
+export interface Product {
   name: string;
   price: number;
 }
-
-const PRODUCTS: Product[] = [
-  {name: 'LG', price: 500},
-  {name: 'Samsung', price: 700},
-  {name: 'Apple', price: 1900},
-  {name: 'Nokia', price: 1000},
-  {name: 'Motorola', price: 500},
-  {name: 'HTC', price: 200}
-];
 
 @Component({
   selector: 'app-product-list',
@@ -20,13 +13,29 @@ const PRODUCTS: Product[] = [
   styleUrls: ['./product-list.component.scss']
 })
 
-export class ProductListComponent {
-  public productList: Product[] = PRODUCTS;
+export class ProductListComponent implements OnInit {
+  public productList: Product[] = [];
   public selectedProduct: Product = null;
+  public newProduct: Product = {
+    name: '',
+    price: 0
+  };
 
-  constructor() { }
+  constructor( private productService: ProductService ) { }
+
+  ngOnInit(): void {
+    this.productService.getProducts().subscribe(
+      (data: Product[]) => {
+        this.productList = data;
+      }
+    );
+  }
 
   public selectProduct(product: Product): void {
     this.selectedProduct = product;
+  }
+
+  public addProduct(): void {
+    console.log(this.newProduct);
   }
 }
