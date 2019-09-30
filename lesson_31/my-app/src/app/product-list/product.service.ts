@@ -19,4 +19,7 @@ export class ProductService {
   public getProducts(): Observable<Product[]> {
     return of(this.products);
   }
+  public setProducts(newProduct: Product): void {
+    this.products.push(newProduct);
+  }
 }
