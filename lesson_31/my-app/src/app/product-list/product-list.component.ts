@@ -16,10 +16,6 @@ export interface Product {
 export class ProductListComponent implements OnInit {
   public productList: Product[] = [];
   public selectedProduct: Product = null;
-  public newProduct: Product = {
-    name: '',
-    price: 0
-  };
 
   constructor( private productService: ProductService ) { }
 
@@ -33,12 +29,5 @@ export class ProductListComponent implements OnInit {
 
   public selectProduct(product: Product): void {
     this.selectedProduct = product;
-  }
-
-  public addProduct(nameP: HTMLInputElement, price: HTMLInputElement): void {
-    this.newProduct.name = nameP.value;
-    this.newProduct.price = Number(price.value);
-
-    this.productService.setProducts(Object.assign({}, this.newProduct));
   }
 }

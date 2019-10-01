@@ -1,0 +1,11 @@
+<form style="width: 30%;">
+  <div class="form-group">
+    <label for="product">Product</label>
+    <input #nameP type="text" class="form-control" id="product" placeholder="Enter data">
+  </div>
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input #price type="text" class="form-control" id="price" placeholder="Enter data">
+  </div>
+  <button class="btn btn-primary" (click)="addProduct(nameP, price)">Submit</button>
+</form>

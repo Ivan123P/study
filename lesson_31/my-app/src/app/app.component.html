@@ -1,2 +1,40 @@
 <app-header></app-header>
-<app-product-list></app-product-list>
+<!-- <app-product-list></app-product-list> -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3 col-margin">
+      <nav class="nav">
+        <ul class="full-width">
+          <li>
+            <button routerLink="/table" 
+                    routerLinkActive="active" 
+                    class="btn btn-sm btn-outline-light full-width">Table</button>
+          </li>
+          <li>
+            <button routerLink="/form" 
+                    routerLinkActive="active" 
+                    class="btn btn-sm btn-outline-light full-width">Form</button>
+          </li>
+          <li>
+            <button routerLink="/test-style" 
+                    routerLinkActive="active" 
+                    class="btn btn-sm btn-outline-light full-width">Test-style</button>
+          </li>
+          <li>
+            <button routerLink="/input" 
+                    routerLinkActive="active" 
+                    class="btn btn-sm btn-outline-light full-width">Input Output</button>
+          </li>
+          <li>
+            <button routerLink="/view" 
+                    routerLinkActive="active" 
+                    class="btn btn-sm btn-outline-light full-width">View</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

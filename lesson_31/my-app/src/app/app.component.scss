@@ -1,0 +1,24 @@
+ul {
+  margin: 0;
+  padding: 20px;
+  list-style: none;
+  box-sizing: border-box;
+}
+li:not(:last-of-type) {
+  margin-bottom: 15px;
+}
+.nav {
+  height: calc(100vh - 80px);
+  background-color: lightsalmon;
+}
+.full-width {
+  width: 100%;
+}
+.active {
+  background-color: coral !important;
+  color: #fff !important;
+}
+.col-margin {
+  margin-top: -20px;
+  margin-left: -15px;
+}
