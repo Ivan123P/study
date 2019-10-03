@@ -1,0 +1,8 @@
+{
+  "products": [
+    {"name":"LG", "category": "phone", "price": 500},
+    {"name":"Nokia", "category": "phone", "price": 700},
+    {"name":"Xiaomi", "category": "phone", "price": 300},
+    {"name":"HTC", "category": "phone", "price": 400}
+  ]
+}
