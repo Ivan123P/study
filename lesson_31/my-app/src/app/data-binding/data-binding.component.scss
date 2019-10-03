@@ -1,0 +1,33 @@
+img {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+button {
+  display: block;
+}
+
+.border-my {
+  border: 5px dashed black;
+}
+
+.background {
+  background-color: #39d36c;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.accent {
+  border: 3px dashed green;
+}
+
+.error {
+  color: red;
+}
+
+.highlighted {
+  background-color: cyan;
+}

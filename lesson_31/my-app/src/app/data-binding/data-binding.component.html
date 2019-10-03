@@ -1,0 +1,37 @@
+<img src="{{ res }}" alt="text" />
+<button (click)="toggleImage()">Change Tesla now!</button>
+<input id="checkbox" type="checkbox" [checked]="flag" (click)="toggleImage()">
+<label for="checkbox">flag</label>
+
+<div [class]="getClasses()">text</div>
+<div [class.border-my]="borderClass" (click)="toggleImage()">borderClass</div>
+<div [class.background]="bgClass" (click)="toggleImage()">bgClass</div>
+
+<div [style.background-color]="flag ? 'red' : 'transparent'">style</div>
+
+<hr>
+
+<input id="checkbox1" type="checkbox" [(ngModel)]="settings.accent" [ngModelOptions]="{standalone: true}">
+<label for="checkbox1">Accent</label><br>
+
+<input id="checkbox2" type="checkbox" [(ngModel)]="settings.error" [ngModelOptions]="{standalone: true}">
+<label for="checkbox2">Error</label><br>
+
+<input id="checkbox3" type="checkbox" [(ngModel)]="settings.highlighted" [ngModelOptions]="{standalone: true}">
+<label for="checkbox3">Highlighted</label><br>
+
+<div [ngClass]="settings">Test div 1</div>
+<div 
+  [class.accent]="settings.accent"
+  [class.error]="settings.error"
+  [class.highlighted]="settings.highlighted"
+>test 2</div>
+
+<hr>
+<input type="text" [(ngModel)]="choice" [ngModelOptions]="{standalone: true}">
+<div [ngSwitch]="choice">
+  <div *ngSwitchCase="'1'" style="background-color: burlywood">div 1</div>
+  <div *ngSwitchCase="'2'" style="background-color: brown">div 2</div>
+  <div *ngSwitchCase="'3'" style="background-color: blueviolet">div 3</div>
+  <div *ngSwitchDefault="" style="background-color: bisque">div default</div>
+</div>
