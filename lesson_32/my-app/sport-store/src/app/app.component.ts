@@ -9,12 +9,14 @@ import { DataService } from './data.service';
 
 export class AppComponent implements OnInit {
   title = 'sport-store';
+list = [];
 
   constructor( private dataService: DataService ) {}
 
   ngOnInit(): void {
     this.dataService.getProducts().subscribe((res: any) => {
       console.log(res);
+      this.list = res;
     });
   }
 }
