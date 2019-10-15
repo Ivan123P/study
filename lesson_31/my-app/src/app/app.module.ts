@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from 'src/header/header.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductService } from './product-list/product.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddProductComponent } from './add-product/add-product.component';
 import { TestStyleComponent } from './test-style/test-style.component';
 import { ChapterComponent } from './test-style/chapter/chapter.component';
@@ -33,7 +33,8 @@ import { DataBindingComponent } from './data-binding/data-binding.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     ProductService
